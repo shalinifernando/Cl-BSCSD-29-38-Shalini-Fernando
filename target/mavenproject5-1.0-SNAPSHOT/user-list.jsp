@@ -22,6 +22,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Country</th>
+            <th>model</th>
             <th>Actions</th>
         </tr>
         <c:forEach var="user" items="${listUser}">
@@ -30,6 +31,7 @@
                 <td>${user.name}</td>
                 <td>${user.email}</td>
                 <td>${user.country}</td>
+                <td>${user.model}</td>
                 <td>
                     <a href="edit?id=${user.id}">Edit</a>
                     <a href="delete?id=${user.id}">Delete</a>
@@ -39,4 +41,3 @@
     </table>
 </body>
 </html>
-

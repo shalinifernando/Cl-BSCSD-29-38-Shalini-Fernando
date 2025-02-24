@@ -4,12 +4,6 @@
  */
 package com.mycompany.mavenproject5.controller;
 
-
-/**
- *
- * @author Java Programming with Aldrin
- */
-
 import com.mycompany.mavenproject5.dao.UserDAO;
 import com.mycompany.mavenproject5.model.User;
 import java.io.IOException;
@@ -94,7 +88,8 @@ public class UserServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String country = request.getParameter("country");
-        User newUser = new User(name, email, country);
+        String model = request.getParameter("Model");
+        User newUser = new User(name, email, country, model);
         userDAO.insertUser(newUser);
         response.sendRedirect("list");
     }
@@ -105,8 +100,9 @@ public class UserServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String country = request.getParameter("country");
+         String model = request.getParameter("model");
 
-        User book = new User(id, name, email, country);
+        User book = new User(id, name, email, country, model);
         userDAO.updateUser(book);
         response.sendRedirect("list");
     }
@@ -118,4 +114,3 @@ public class UserServlet extends HttpServlet {
         response.sendRedirect("list");
     }
 }
-

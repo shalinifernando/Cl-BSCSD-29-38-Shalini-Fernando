@@ -25,6 +25,8 @@
         <input type="email" name="email" value="${user != null ? user.email : ''}" required/><br/>
         <label>Country:</label>
         <input type="text" name="country" value="${user != null ? user.country : ''}" required/><br/>
+         <label>Model:</label>
+        <input type="text" name="model" value="${user != null ? user.model : ''}" required/><br/>
         <input type="submit" value="${user == null ? 'Save' : 'Update'}" />
     </form>
     <a href="list">Back to User List</a>

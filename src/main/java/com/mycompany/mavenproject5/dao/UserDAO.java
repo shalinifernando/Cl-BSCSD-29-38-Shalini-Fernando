@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/userdb";
+     private String jdbcURL = "jdbc:mysql://localhost:3306/userdb";
     private String jdbcUsername = "root";
     private String jdbcPassword = "password";
 
-    private static final String INSERT_USERS_SQL = "INSERT INTO users (name, email, country) VALUES (?, ?, ?)";
-    private static final String SELECT_USER_BY_ID = "SELECT id, name, email, country FROM users WHERE id = ?";
+    private static final String INSERT_USERS_SQL = "INSERT INTO users (name, email, country, model) VALUES (?, ?, ?, ?)";
+    private static final String SELECT_USER_BY_ID = "SELECT id, name, email, country, model FROM users WHERE id = ?";
     private static final String SELECT_ALL_USERS = "SELECT * FROM users";
     private static final String DELETE_USERS_SQL = "DELETE FROM users WHERE id = ?";
-    private static final String UPDATE_USERS_SQL = "UPDATE users SET name = ?, email = ?, country = ? WHERE id = ?";
+    private static final String UPDATE_USERS_SQL = "UPDATE users SET name = ?, email = ?, country = ? , model = ? WHERE id = ?";
 
     protected Connection getConnection() {
         Connection connection = null;
@@ -37,6 +37,7 @@ public class UserDAO {
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getCountry());
+             preparedStatement.setString(4, user.getModel());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -54,7 +55,8 @@ public class UserDAO {
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String country = rs.getString("country");
-                user = new User(id, name, email, country);
+                 String model = rs.getString("model");
+                user = new User(id, name, email, country, model);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -73,7 +75,8 @@ public class UserDAO {
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String country = rs.getString("country");
-                users.add(new User(id, name, email, country));
+                  String model = rs.getString("model");
+                users.add(new User(id, name, email, country, model));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -98,7 +101,8 @@ public class UserDAO {
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getCountry());
-            statement.setInt(4, user.getId());
+             statement.setString(4, user.getModel());
+            statement.setInt(5, user.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
         }
@@ -121,3 +125,5 @@ public class UserDAO {
         }
     }
 }
+
+

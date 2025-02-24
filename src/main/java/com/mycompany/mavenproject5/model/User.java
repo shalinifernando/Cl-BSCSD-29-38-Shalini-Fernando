@@ -4,34 +4,28 @@
  */
 package com.mycompany.mavenproject5.model;
 
-/**
- *
- * @author User
- */
-
-
-/**
- *
- * @author Java Programming with Aldrin
- */
 public class User {
 
     private int id;
     private String name;
     private String email;
     private String country;
+    private String model;
+     
 
-    public User(int id, String name, String email, String country) {
+    public User(int id, String name, String email, String country,  String model) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.country = country;
+        this.model = model;
     }
     
-     public User(String name, String email, String country) {
+     public User(String name, String email, String country, String model) {
         this.name = name;
         this.email = email;
         this.country = country;
+         this.model = model;
     }
 
     /**
@@ -88,6 +82,19 @@ public class User {
      */
     public void setCountry(String country) {
         this.country = country;
+    }
+    /**
+     * @return the country
+     */
+    public String getModel() {
+        return model;
+    }
+
+    /**
+     * @param country the country to set
+     */
+    public void setModel(String model) {
+        this.model = model;
     }
 
 }
